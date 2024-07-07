@@ -7,12 +7,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "seed": "node seeder.js",
+    "destroy": "node seeder.js -d"
   },
   "author": "Buddy Cake",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2"
+    "bcryptjs": "^2.4.3",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.5"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
