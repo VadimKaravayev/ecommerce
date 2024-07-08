@@ -2,22 +2,16 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
 import Rating from "../components/Rating";
-import { useState, useEffect } from "react";
-import axios from 'axios';
+import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 export default function ProductScreen() {
   const { id } = useParams();
-  const [product, setProduct] = useState({});
+  const { data: product, isLoading, error } = useGetProductDetailsQuery(id);
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/products/${id}`);
-      setProduct(data);
-      console.log(data)
-    }
-    fetchProduct();
-  }, [id]);
-
+  if (error) return <Message variant='danger'><h5>Oops..</h5></Message>
+  if (isLoading) return <Loader />
 
   return <>
     <Link className="btn btn-light my-3" to="/" >Go back</Link>
