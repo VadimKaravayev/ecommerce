@@ -16,7 +16,7 @@ export default function ProductScreen() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { data: product, isLoading, error } = useGetProductDetailsQuery(id);
-  const [qty, setQty] = useState(1)
+  const [qty, setQty] = useState(1);
 
   if (error) return <Message variant='danger'><h5>Oops..</h5></Message>
   if (isLoading) return <Loader />
@@ -76,7 +76,11 @@ export default function ProductScreen() {
             </ListGroup.Item> : null}
 
             <ListGroup.Item>
-              <Button className="btn-block" type="button" onClick={addToCartHandler} disabled={!product.countInStock}>Add to Cart</Button>
+              <Button
+                className="btn-block"
+                type="button"
+                onClick={addToCartHandler}
+                disabled={!product.countInStock}>Add to Cart</Button>
             </ListGroup.Item>
           </ListGroup>
         </Card>

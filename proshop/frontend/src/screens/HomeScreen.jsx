@@ -6,7 +6,7 @@ import Message from '../components/Message';
 
 export default function HomeScreen() {
 
-  const { data: products = [], isLoading, error } = useGetProductsQuery()
+  const { data: products = [], isLoading, error } = useGetProductsQuery();
 
   if (error) return
   <Message variant='danger'>
